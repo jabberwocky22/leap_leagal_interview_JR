@@ -24,4 +24,11 @@ Please implement the following:
 
 [Explain here what the bug was and how you fixed it]
 
+A:  The bug I found is that when updating book details, it remained old data instead of updated data.
+    So I went through the codebase and invested the update function, what I got is -
+    when we set book data, we used `book.id === selectedBook?.id ? { ...updatedBook, ...book } : book`,
+    which is wrong because object spread syntax merges the properties from left to right,
+    eg: { ...A, ...B } will spread A first and then overwrites the same properties using value in B,
+    so { ...updatedBook, ...book } actually means the updated data will be overwritted by the old data.
+
 Good luck and have fun!
